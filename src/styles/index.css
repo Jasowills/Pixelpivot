@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Lato:wght@300;400&family=Poppins&display=swap');
+:root{
+  --text-color: rgb(2, 2, 97);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 3;
+  margin-bottom: 100px;
+  box-shadow: 1px 1px 5px 0px rgba(99,99,99,0.75);
+  color: var(--text-color);
+}
+nav{
+  width: 50%; 
+}
+.nav{
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+.nav ul{
+  width: 40%;
+}
+nav ul{
+  display: flex;
+  justify-content: space-between;
+}
+nav ul li{
+   list-style: none;
+   cursor: pointer;
+}
+.banner{
+  border: 1px solid transparent;
+  height: 100vh;
+  backdrop-filter: 30px;
+  background-image: url('../images/background1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.form {
+  width: 35%;
+  padding-left: 20px;
+  padding-right: 35px;
+
+  color: whitesmoke;
+  padding-top: 25px;
+  padding-bottom: 30px;
+  margin: 150px auto;
+  background: rgba(255, 255, 255, 0.1); /* Set a transparent background color */
+  backdrop-filter: blur(10px); /* Apply a blur effect to the background */
+  border-radius: 10px; /* Add rounded corners for a modern look */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Add a box shadow for the glossy effect */
+}
+
+label{
+  margin-bottom: 10px;
+}
+input{
+  width: 99%;
+  padding: 10px;
+  outline: none;
+  color: var(--text-color);
+}
+.button{
+  padding: 10px;
+  width: 100%;
+  background-color: var(--text-color);
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 15px;
+}
+.button-container{
+  width: 103%;
+  margin-top: 10px;
+}
+/* gallery.css */
+.image-grid-container {
+  display: grid;
+  width: 99%;
+  margin: auto;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust column width */
+  gap: 16px; /* Adjust spacing between images */
+}
+
+.image-container {
+  overflow: hidden;
+  
+  border-radius: 8px; /* Rounded corners for images */
+}
+
+.gallery-image {
+  width: 99%;
+  height: auto;
+  display: block;
+}
+.search-form {
+  display: flex;
+  width: 50%;
+  align-items: center;
+}
+
+.search-input {
+  padding: 5px;
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  padding: 10px;
+  margin-right: 10px; /* Space between input and button */
+}
+
+.search-button {
+  background-color: var(--text-color); /* Background color for the search button */
+  color: white; /* Text color for the search button */
+  border: none;
+  border-radius: 4px;
+  height: 38px;
+  justify-content: center;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the search icon */
+.search-button svg {
+  margin-right: 5px; /* Space between icon and text */
+}
+/* CSS for the loading spinner */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 20px;
+  color: #333;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid var(--text-color);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
