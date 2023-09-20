@@ -53,8 +53,8 @@ const GalleryPage = () => {
     <div>
       <GalleryNavbar setSearchTerm={setSearchTerm} onSearch={handleSearch} />
       &nbsp;
-      <br />
-      <br />
+      <br className='break' />
+      <br className='break'/>
       <br />
       <TagsComponent setSelectedTag={setSelectedTag} fetchImagesByTag={fetchImagesByTag} />
       <br />

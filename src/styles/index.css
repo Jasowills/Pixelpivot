@@ -241,9 +241,9 @@ input{
   font-weight: bold;
 }
 @media screen and (max-width: 800px) {
-  body{
-    overflow-x: hidden;
-
+  body, .App{
+    overflow-x: hidden !important;
+    
   }
    .navbar{
       display: flex;
@@ -255,12 +255,12 @@ input{
       width: 100%;
    }
    .navbar h2{
-    font-size: 16px;
+    font-size: 19px;
    }
    nav{
-    border: 1px solid red;
-    width: 100%;
-    padding: 0px;
+    width: 90% !important;
+
+    padding: 5px;
    }
    nav ul{
     width: 100%;
@@ -268,5 +268,25 @@ input{
    }
    .search-form{
      width: 100%;
+   }
+   .tags{
+    width: 100%;
+    justify-content: space-evenly;
+   }
+   .tag{
+    width: 40px;
+    font-size: 50%;
+   }
+   .break{
+    display: none;
+   }
+   .image-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust column width */
+   }
+   .login-container{
+    width: 100%;
+   }
+   .illustration{
+    display: none;
    }
 }
