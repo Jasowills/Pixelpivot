@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import 'animate.css';
+
 
 const TagsComponent = ({ setSelectedTag, fetchImagesByTag}) => {
   const [activeTag, setActiveTag] = useState("All");
@@ -12,7 +14,7 @@ const TagsComponent = ({ setSelectedTag, fetchImagesByTag}) => {
   };
 
   return (
-    <div className="tags">
+    <div className="tags animate__animated animate__fadeInLeft">
       <div
         className={`tag ${activeTag === "All" ? "active" : ""}`}
         onClick={() => handleTagClick("All")}

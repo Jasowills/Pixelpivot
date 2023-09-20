@@ -62,7 +62,7 @@ const Gallery = ({ searchTerm, setImages, selectedTags, selectedTag, images, loa
                               src={image.src}
                               alt={image.alt}
                               className="gallery-image"
-                              data-aos="fade-up"
+                              data-aos="fade-in"
                             />
                           </div>
                         )}

@@ -6,6 +6,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -238,4 +239,34 @@ input{
   background-color: black;
   color: white;
   font-weight: bold;
+}
+@media screen and (max-width: 800px) {
+  body{
+    overflow-x: hidden;
+
+  }
+   .navbar{
+      display: flex;
+      position: relative;
+      padding: 0px;
+      margin: 0px;
+      justify-content: space-between;
+      flex-direction: column;
+      width: 100%;
+   }
+   .navbar h2{
+    font-size: 16px;
+   }
+   nav{
+    border: 1px solid red;
+    width: 100%;
+    padding: 0px;
+   }
+   nav ul{
+    width: 100%;
+    display: none;
+   }
+   .search-form{
+     width: 100%;
+   }
 }
