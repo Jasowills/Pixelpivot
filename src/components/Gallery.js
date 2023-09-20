@@ -3,52 +3,17 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const filterImagesBySearch = (images, search) => {
-  return images.filter((image) =>
-    image.alt.toLowerCase().includes(search.toLowerCase())
-  );
+const filterImages = (images, searchTerm, selectedTags, selectedTag) => {
+  return images.filter((image) => {
+    const includesSelectedTags =
+      selectedTags.length === 0 || selectedTags.some((tag) => image.tags.includes(tag));
+    const isMatchingSelectedTag = selectedTag === 'All' || image.tags.includes(selectedTag);
+    return  includesSelectedTags && isMatchingSelectedTag;
+  });
 };
 
-const Gallery = ({ searchTerm }) => {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const apiKey = 'xD8DuDylYDtaSUqTC14VA1rAaRsT4gdXU1ZIE8ihs7jhKDH9Fv1i6uHe';
-  const [searchedImagesExist, setSearchedImagesExist] = useState(true);
-
-  useEffect(() => {
-    AOS.init();
-    fetch('https://api.pexels.com/v1/curated?per_page=50', {
-      method: 'GET',
-      headers: {
-        Authorization: apiKey,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        const portraitImages = data.photos.filter(
-          (photo) => photo.height > photo.width
-        );
-
-        const imageList = portraitImages.map((photo) => ({
-          id: photo.id.toString(),
-          src: photo.src.medium,
-          alt: photo.photographer,
-        }));
-
-        setImages(imageList);
-        setLoading(false);
-
-        // Update searchedImagesExist based on whether there are any filtered images
-        setSearchedImagesExist(imageList.length > 0);
-      })
-      .catch((error) => {
-        console.error('Error fetching images:', error);
-        setLoading(false);
-        setSearchedImagesExist(false);
-      });
-  }, [apiKey]);
-
-  const filteredImages = filterImagesBySearch(images, searchTerm);
+const Gallery = ({ searchTerm, setImages, selectedTags, selectedTag, images, loading }) => {
+  const filteredImages = filterImages(images, searchTerm, selectedTags, selectedTag);
 
   const handleDragEnd = (result) => {
     if (!result.destination) return;
@@ -60,6 +25,10 @@ const Gallery = ({ searchTerm }) => {
     setImages(reorderedImages);
   };
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <div>
       {loading ? (
@@ -69,7 +38,7 @@ const Gallery = ({ searchTerm }) => {
         </div>
       ) : (
         <>
-          {searchedImagesExist ? (
+          {images.length > 0 ? (
             <DragDropContext onDragEnd={handleDragEnd}>
               <Droppable droppableId="image-gallery" direction="horizontal">
                 {(provided) => (

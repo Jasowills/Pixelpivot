@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../auth'; // Imported the firebase.js file you created in your src folder
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify'; // Import React Toastify components and functions
 import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for React Toastify
 
@@ -35,10 +35,15 @@ function Form() {
   };
 
   return (
-    <div>
+    <div className='login-container'>
       <ToastContainer /> {/* Add the ToastContainer component */}
       <form className="form" onSubmit={handleSubmit}>
-        <label>Email
+      <h1 className='text'>Pixel<span className='logo-span'>Pivot</span></h1>
+      <br/>
+      <h3 className='login-head'>Log In to continue</h3>
+
+      <br/>
+        <label>E-mail
           <input
             type="email"
             value={email}
@@ -61,15 +66,28 @@ function Form() {
         </label>
         <br />
         <br />
+        <br />
         <div className="button-container">
-          <button
-            type="submit"
-            className={`${buttonLoader ? 'buttonLoader' : 'button'}`}
-            disabled={buttonLoader}
-          >
-            {buttonLoader ? 'Logging in...' : 'LOG IN'}
-          </button>
-        </div>
+            {buttonLoader ? (
+     <div className="spinner"></div>
+            ) : (
+            <button
+              type="submit"
+              className="button"
+            >
+              LOG IN
+            </button>
+          )}
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <span className="form-span">
+          Don't have an account?{" "} &nbsp;
+          <Link to="/signup" className="text-decoration">
+            Sign Up
+          </Link>
+        </span>
       </form>
     </div>
   );
